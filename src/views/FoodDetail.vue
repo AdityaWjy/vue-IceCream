@@ -39,21 +39,30 @@
           <h4>
             Harga : <strong>RP. {{ product.harga }}</strong>
           </h4>
-          <form>
+          <form v-on:submit.prevent>
             <div class="form-group">
               <label for="jumlah_pemesanan" class="mb-1"
                 >Jumlah Pesanan :</label
               >
-              <input type="number" class="form-control" />
+              <input
+                type="number"
+                class="form-control"
+                v-model="pesan.jumlah_pemesanan"
+              />
             </div>
             <div class="form-group mt-3">
               <label for="keterangan" class="mb-1">Keterangan :</label>
               <textarea
+                v-model="pesan.keterangan"
                 class="form-control"
                 placeholder="Keterangan"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-success mt-3">
+            <button
+              type="submit"
+              class="btn btn-success mt-3"
+              @click="pemesanan"
+            >
               <b-icon-cart></b-icon-cart>Pesan
             </button>
           </form>
@@ -69,7 +78,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      product: [],
+      product: {},
+      pesan: {},
     };
   },
 
@@ -79,7 +89,30 @@ export default {
     setProduct(data) {
       this.product = data;
     },
+    pemesanan() {
+      if (this.pesan.jumlah_pemesanan) {
+        this.pesan.products = this.product;
+        axios
+          .post('http://localhost:3000/keranjangs', this.pesan)
+          .then(() => {
+            this.$router.push({ path: '/keranjang' });
+            this.$toast.success('Sukses masuk keranjang.', {
+              type: 'success',
+              position: 'top',
+              dismissible: true,
+            });
+          })
+          .catch((err) => console.log(err));
+      } else {
+        this.$toast.error('Jumlah pemesanan harus diisi.', {
+          type: 'error',
+          position: 'top',
+          dismissible: true,
+        });
+      }
+    },
   },
+
   mounted() {
     axios
       .get('http://localhost:3000/products/' + this.$route.params.id)

@@ -3,6 +3,10 @@ import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import FoodsView from '../views/FoodsView.vue';
 import FoodDetail from '../views/FoodDetail.vue';
+import KeranjangView from '../views/KeranjangView.vue';
+import PesananSuksesView from '../views/PesananSuksesView.vue';
+import AdminView from '../views/AdminView.vue';
+import AdminDetail from '../views/AdminDetail.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -30,6 +34,28 @@ const routes = [
     path: '/foods/:id',
     name: 'FoodDetail',
     component: FoodDetail,
+  },
+  {
+    path: '/keranjang',
+    name: 'KeranjangView',
+    component: KeranjangView,
+  },
+  {
+    path: '/pesanan-sukses',
+    name: 'PesananSuksesView',
+    component: PesananSuksesView,
+  },
+
+  {
+    path: '/Admin',
+    name: 'AdminView',
+    component: AdminView,
+  },
+
+  {
+    path: '/admin-detail',
+    name: 'AdminDetail',
+    component: AdminDetail,
   },
 ];
 
