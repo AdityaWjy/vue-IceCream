@@ -1,7 +1,10 @@
 <template>
   <div>
     <NavbarView />
-    <div class="container">
+
+    <!-- Desktop Foods View Display  -->
+
+    <div class="container d-none d-md-block">
       <div class="row mt-4">
         <div class="col">
           <h2>Ice cream <strong>menu</strong></h2>
@@ -33,6 +36,41 @@
           v-for="product in products"
           :key="product.id"
         >
+          <CardProduct :product="product" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Foods View display  -->
+
+    <div class="container d-sm-block d-md-none">
+      <div class="row mt-4">
+        <div class="col">
+          <h2>Ice cream <strong>menu</strong></h2>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col mt-4">
+          <div class="input-group mb-3">
+            <input
+              v-model="search"
+              type="text"
+              class="form-control"
+              placeholder="Cari Ice Cream Kesukaan Anda"
+              aria-label="Cari"
+              aria-describedby="basic-addon1"
+              @keyup="searchIce"
+            />
+            <span class="input-group-text" id="basic-addon1">
+              <b-icon-search></b-icon-search>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col mt-4" v-for="product in products" :key="product.id">
           <CardProduct :product="product" />
         </div>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <!-- Desktop Display -->
+    <!-- Desktop Hero Display -->
 
     <div class="d-none d-md-block">
       <!-- Div Display Desktop-->
@@ -13,6 +13,7 @@
                 In Your Gadget
               </h2>
               <p>Ayo segera pilih dan pesan es krim favorit Anda.</p>
+              <!-- Button routerlink to FoodsView -->
               <router-link class="btn btn-lg btn-success" to="/foods">
                 <b-icon-arrow-right></b-icon-arrow-right> Order
               </router-link>
@@ -25,7 +26,7 @@
       </div>
     </div>
 
-    <!-- Display Mobile -->
+    <!-- Mobile Hero Display -->
 
     <div class="d-sm-block d-md-none">
       <!-- Div display mobile -->
@@ -41,9 +42,10 @@
                 In Your Gadget
               </h2>
               <p>Ayo segera pilih dan pesan es krim favorit Anda.</p>
-              <button class="btn btn-lg btn-success mb-4">
+              <!-- Button routerlink to FoodsView -->
+              <router-link class="btn btn-lg btn-success" to="/foods">
                 <b-icon-arrow-right></b-icon-arrow-right> Order
-              </button>
+              </router-link>
             </div>
           </div>
         </div>

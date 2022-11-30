@@ -2,6 +2,7 @@
   <div class="home">
     <NavbarView />
     <div class="container">
+      <!-- Import Hero Component -->
       <HeroView />
       <div class="row mt-3">
         <div class="col">
@@ -14,12 +15,9 @@
         </div>
       </div>
 
+      <!-- Import Card Product Component -->
       <div class="row mb-3">
-        <div
-          class="col-md-4 mt-4"
-          v-for="product in products"
-          :key="product.id"
-        >
+        <div class="col mt-4" v-for="product in products" :key="product.id">
           <CardProduct :product="product" />
         </div>
       </div>

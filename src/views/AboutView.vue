@@ -1,34 +1,29 @@
-<template>
-  <div class="about">
-    <div class="container mt-3">
-      <b-navbar toggleable="sm" type="light">
-        <b-navbar-brand>MiCream</b-navbar-brand>
+<!-- <template> -->
+<!-- <form ref="form" @submit="editMenu(product.id)">
+    <label for="id">Id Product : {{ product.id }}</label>
+    <input class="form-control" type="number" v-model="menu.id" />
 
-        <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+    <label for="kode">Kode Product : {{ product.kode }}</label>
+    <input class="form-control" type="text" v-model="menu.kode" />
 
-        <b-collapse id="nav-text-collapse" is-nav>
-          <b-navbar-nav>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/foods">Menu</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
-            </li>
+    <label for="nama">Nama Product : {{ product.nama }} </label>
+    <input class="form-control" type="text" v-model="menu.nama" />
 
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
-            </li>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-  </div>
-</template>
+    <label for="harga">Harga Product : {{ product.harga }}</label>
+    <input class="form-control" type="number" v-model="menu.harga" />
 
-<style scoped>
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>
+    <label for="detail">Detail Product : {{ product.is_ready }}</label>
+    <select
+      class="form-select input-ready-mobile"
+      aria-label="Default select example"
+      v-model="menu.is_ready"
+    >
+      <option disabled>Ready/Kosong</option>
+      <option value="Ready">Ready</option>
+      <option value="Limited">Limited</option>
+    </select>
+
+    <label for="gambar">Gambar Product : {{ product.gambar }}</label>
+    <input class="form-control" type="text" v-model="menu.gambar" />
+  </form> -->
+<!-- </template> -->

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Responsive navbar with bootstrap Mobile or Desktop -->
     <b-navbar toggleable="lg" type="light" class="navbar">
       <div class="container mt-3">
         <b-navbar-brand href="#">MiCream</b-navbar-brand>
@@ -25,6 +26,7 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/keranjang"
                 >Keranjang <b-icon-bag></b-icon-bag>
+                <!-- Qty dari keranjang yang masuk -->
                 <span class="badge text-bg-success">{{
                   updateKeranjang
                     ? updateKeranjang.lenght

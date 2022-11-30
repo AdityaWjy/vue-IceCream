@@ -1,7 +1,9 @@
 <template>
   <div class="keranjang">
     <NavbarView :updateKeranjang="keranjangs" />
-    <div class="container">
+
+    <!-- Desktop Keranjang View Display -->
+    <div class="container d-none d-md-block">
       <div class="row mt-5">
         <div class="col">
           <nav aria-label="breadcrumb">
@@ -77,6 +79,7 @@
 
                   <td class="text-danger">
                     <b-icon-trash
+                      class="icon"
                       @click="hapusKeranjang(keranjang.id)"
                     ></b-icon-trash>
                   </td>
@@ -87,6 +90,126 @@
                     <strong>Total Harga : </strong>
                   </td>
                   <td>
+                    <strong> Rp. {{ totalHarga }} </strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Checkout -->
+      <div class="row justify-content-end">
+        <div class="col md-4">
+          <form v-on:submit.prevent>
+            <div class="form-group">
+              <label for="nama" class="mb-1">Nama</label>
+              <input type="text" class="form-control" v-model="pesan.nama" />
+            </div>
+            <div class="form-group">
+              <label for="noMeja" class="mb-1">Nomor Meja</label>
+              <input type="text" class="form-control" v-model="pesan.noMeja" />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success mt-3"
+              @click="checkout"
+            >
+              <b-icon-cart></b-icon-cart>Pesan
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Keranjang View Display -->
+    <div class="container d-sm-block d-md-none">
+      <div class="row mt-5">
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <router-link to="/" class="text-dark">Home</router-link>
+              </li>
+              <li class="breadcrumb-item">
+                <router-link to="/foods" class="text-dark"
+                  >Ice Cream</router-link
+                >
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Keranjang Order
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h2>Keranjang <strong>Saya</strong></h2>
+          <div class="table-responsive mt-3">
+            <table class="table table-mobile">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Note</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Harga</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(keranjang, index) in keranjangs"
+                  :key="keranjang.id"
+                >
+                  <th>{{ index + 1 }}</th>
+                  <td>
+                    <img
+                      :src="'../assets/images/' + keranjang.products.gambar"
+                      class="img-fluid shadow img-mobile"
+                      width="150"
+                      height="180"
+                      style="width: 100px; height: 50px"
+                    />
+                  </td>
+                  <td>
+                    <strong>{{ keranjang.products.nama }}</strong>
+                  </td>
+                  <td>
+                    {{ keranjang.keterangan ? keranjang.keterangan : '-' }}
+                  </td>
+                  <td>
+                    {{ keranjang.jumlah_pemesanan }}
+                  </td>
+                  <td>
+                    Rp.
+                    {{ keranjang.products.harga }}
+                  </td>
+                  <td>
+                    <strong>
+                      Rp.
+                      {{
+                        keranjang.products.harga * keranjang.jumlah_pemesanan
+                      }}
+                    </strong>
+                  </td>
+
+                  <td class="text-danger tong-sampah">
+                    <b-icon-trash
+                      @click="hapusKeranjang(keranjang.id)"
+                    ></b-icon-trash>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="6" align="right" style="border-bottom: none">
+                    <strong>Total Harga : </strong>
+                  </td>
+                  <td colspan="10">
                     <strong> Rp. {{ totalHarga }} </strong>
                   </td>
                 </tr>
@@ -228,4 +351,18 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.tong-sampah {
+  font-size: 25px;
+}
+
+.icon {
+  font-size: 25px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.table-responsive {
+  overflow-x: hidden;
+}
+</style>
